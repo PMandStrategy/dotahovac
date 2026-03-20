@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projektový dotahovač — individuální podpora k dotažení vašeho projektu | Mira Vlach</title>
+  <meta name="description" content="Individuální podpora seniorního projektového experta. Dotáhněte svůj důležitý projekt do konce s osobním dohledem Miry Vlacha.">
+  <meta name="author" content="Ing. Mira Vlach">
+  <meta property="og:title" content="Projektový dotahovač — individuální podpora k dotažení projektu">
+  <meta property="og:description" content="Individuální podpora seniorního experta. Jeden projekt. Osobní dohled. Reálný výsledek.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dotahovac.cz">
+  <link rel="canonical" href="https://dotahovac.cz">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0F0F0F;
+      --color-bg-light: #FAF8F5;
+      --color-surface: #1A1A1A;
+      --color-surface-light: #FFFFFF;
+      --color-text-light: #FFFFFF;
+      --color-text-dark: #1A1A1A;
+      --color-text-muted-light: rgba(255,255,255,0.6);
+      --color-text-muted-dark: #6B6B6B;
+      --color-border-light: rgba(255,255,255,0.08);
+      --color-border-dark: #E0DCD6;
+      --gradient-accent: linear-gradient(135deg, #E8722A, #D94F73);
+      --gradient-accent-hover: linear-gradient(135deg, #D46520, #C44568);
+      --gradient-warm: linear-gradient(135deg, #E8722A 0%, #D94F73 50%, #B83B8A 100%);
+      --color-accent-solid: #E8722A;
+      --color-accent-pink: #D94F73;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+      --max-width: 1100px;
+      --section-padding: clamp(5rem, 10vw, 8rem);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--color-text-dark); background: var(--color-bg-light); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* ═══════════ NAV ═══════════ */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background 0.4s, box-shadow 0.4s; }
+    .nav.scrolled { background: rgba(15,15,15,0.95); backdrop-filter: blur(20px); box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+    .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 1.1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: var(--font-body); font-weight: 700; font-size: 1rem; color: var(--color-text-light); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-logo span { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.25s; letter-spacing: 0.02em; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--gradient-accent) !important; -webkit-text-fill-color: #fff !important; color: #fff !important; padding: 0.55rem 1.4rem !important; border-radius: 100px !important; font-weight: 500 !important; transition: opacity 0.25s !important; }
+    .nav-cta:hover { opacity: 0.88 !important; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-surface); flex-direction: column; padding: 2rem; gap: 1.2rem; border-bottom: 1px solid var(--color-border-light); }
+      .nav-links.open { display: flex; }
+    }
+
+    /* ═══════════ HERO — dark ═══════════ */
+    .hero { background: var(--color-bg); color: var(--color-text-light); padding: calc(var(--section-padding) + 3rem) 2rem var(--section-padding); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -30%; right: -15%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,114,42,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+    .hero-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent-solid); margin-bottom: 1.5rem; animation: fadeUp 0.6s ease-out; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.2vw, 3.4rem); line-height: 1.18; font-weight: 500; margin-bottom: 1.5rem; animation: fadeUp 0.6s ease-out 0.1s both; }
+    .hero h1 em { font-style: italic; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-text { font-size: 1.08rem; color: var(--color-text-muted-light); max-width: 520px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.75; animation: fadeUp 0.6s ease-out 0.2s both; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s ease-out 0.3s both; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-weight: 500; font-size: 0.92rem; padding: 0.9rem 2rem; border-radius: 100px; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; letter-spacing: 0.01em; }
+    .btn-gradient { background: var(--gradient-accent); color: #fff; box-shadow: 0 4px 24px rgba(232,114,42,0.2); }
+    .btn-gradient:hover { box-shadow: 0 8px 32px rgba(232,114,42,0.35); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+    .btn-dark { background: var(--gradient-accent); color: #fff; box-shadow: 0 4px 20px rgba(232,114,42,0.18); }
+    .btn-dark:hover { box-shadow: 0 8px 28px rgba(232,114,42,0.3); transform: translateY(-2px); }
+    .btn-outline-dark { background: transparent; color: var(--color-text-dark); border: 1.5px solid var(--color-border-dark); }
+    .btn-outline-dark:hover { border-color: var(--color-accent-solid); color: var(--color-accent-solid); }
+
+    /* Hero card */
+    .hero-visual { animation: fadeUp 0.8s ease-out 0.15s both; }
+    .hero-card { background: var(--color-surface); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--color-border-light); position: relative; overflow: hidden; }
+    .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-accent); }
+    .hc-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; }
+    .progress-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.7rem 0; }
+    .progress-item + .progress-item { border-top: 1px solid rgba(255,255,255,0.04); }
+    .pi-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .pi-dot.done { background: #4CAF7D; }
+    .pi-dot.active { background: var(--color-accent-solid); box-shadow: 0 0 0 4px rgba(232,114,42,0.15); animation: pulse 2s infinite; }
+    .pi-dot.pending { background: rgba(255,255,255,0.1); }
+    .pi-label { font-size: 0.88rem; font-weight: 400; color: rgba(255,255,255,0.7); }
+    .pi-label.muted { color: rgba(255,255,255,0.3); }
+    .hc-stats { display: flex; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .hc-stats div { flex: 1; }
+    .hc-stats strong { font-size: 1.5rem; font-weight: 700; display: block; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hc-stats small { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ═══════════ SECTIONS — light ═══════════ */
+    .section { padding: var(--section-padding) 2rem; }
+    .section-inner { max-width: var(--max-width); margin: 0 auto; }
+    .section-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent-solid); margin-bottom: 0.85rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.2; font-weight: 500; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.05rem; color: var(--color-text-muted-dark); max-width: 580px; margin-bottom: 3rem; font-weight: 300; }
+
+    /* ═══════════ HOW IT WORKS ═══════════ */
+    .how-section { border-top: 1px solid var(--color-border-dark); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; counter-reset: step; }
+    .step-card { padding: 2rem 1.5rem; border-radius: 16px; background: var(--color-surface-light); border: 1px solid var(--color-border-dark); transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .step-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.35; line-height: 1; margin-bottom: 1rem; }
+    .step-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step-card p { font-size: 0.88rem; color: var(--color-text-muted-dark); line-height: 1.6; font-weight: 300; }
+    @media (max-width: 900px) { .steps-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .steps-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════ VALUE PROPOSITION ═══════════ */
+    .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .value-text { font-size: 1.05rem; color: var(--color-text-muted-dark); line-height: 1.85; font-weight: 300; }
+    .value-text p { margin-bottom: 1.25rem; }
+    .value-text strong { color: var(--color-text-dark); font-weight: 500; }
+    .value-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .value-list li { display: flex; align-items: flex-start; gap: 0.85rem; font-size: 0.95rem; padding: 1.1rem 1.3rem; background: var(--color-surface-light); border: 1px solid var(--color-border-dark); border-radius: 12px; transition: border-color 0.25s; font-weight: 400; }
+    .value-list li:hover { border-color: var(--color-accent-solid); }
+    .value-list .vi-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; background: linear-gradient(135deg, rgba(232,114,42,0.08), rgba(217,79,115,0.08)); }
+    @media (max-width: 768px) { .value-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════ PRICING — dark ═══════════ */
+    .pricing-section { background: var(--color-bg); color: var(--color-text-light); }
+    .pricing-section .section-label { color: var(--color-accent-solid); }
+    .pricing-section .section-title { color: #fff; }
+    .pricing-section .section-subtitle { color: var(--color-text-muted-light); }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .price-card { background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: 20px; padding: 2.5rem; position: relative; transition: border-color 0.3s; }
+    .price-card:hover { border-color: rgba(255,255,255,0.15); }
+    .price-card.featured { border-color: transparent; background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--gradient-accent) border-box; border: 2px solid transparent; }
+    .price-card.featured .price-badge { position: absolute; top: -0.75rem; left: 2rem; background: var(--gradient-accent); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 0.35rem 1rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .price-card h3 { font-size: 1.05rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; }
+    .price-amount { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .price-amount small { font-family: var(--font-body); font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.4); }
+    .price-note { font-size: 0.82rem; color: rgba(255,255,255,0.3); margin-bottom: 1.75rem; font-weight: 300; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .price-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: rgba(255,255,255,0.65); font-weight: 300; }
+    .price-features li::before { content: '✓'; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; flex-shrink: 0; }
+    .price-card .btn { width: 100%; justify-content: center; }
+    .pricing-footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+    .pricing-alt { text-align: center; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .pricing-alt p { color: rgba(255,255,255,0.45); font-size: 0.92rem; font-weight: 300; }
+    .pricing-alt a { color: var(--color-accent-solid); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(232,114,42,0.3); transition: border-color 0.2s; }
+    .pricing-alt a:hover { border-color: var(--color-accent-solid); }
+    @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════ TESTIMONIALS ═══════════ */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .t-card { background: var(--color-surface-light); border: 1px solid var(--color-border-dark); border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .t-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.05); }
+    .t-card blockquote { font-size: 0.88rem; color: var(--color-text-muted-dark); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; font-weight: 300; }
+    .t-author { font-weight: 600; font-size: 0.88rem; }
+    .t-role { font-size: 0.78rem; color: var(--color-text-muted-dark); font-weight: 300; }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════ ABOUT ═══════════ */
+    .about-section { background: var(--color-surface-light); border-top: 1px solid var(--color-border-dark); }
+    .about-grid { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+    .about-photo { width: 100%; aspect-ratio: 3/4; background: #E8E4DE; border-radius: 16px; overflow: hidden; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo .placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--color-text-muted-dark); text-align: center; padding: 1rem; }
+    .about-content h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem; }
+    .about-content p { color: var(--color-text-muted-dark); margin-bottom: 1rem; line-height: 1.8; font-weight: 300; }
+    .credentials { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .cred-tag { font-size: 0.75rem; font-weight: 500; padding: 0.4rem 0.85rem; background: rgba(232,114,42,0.06); border-radius: 100px; color: var(--color-accent-solid); border: 1px solid rgba(232,114,42,0.12); }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-photo { max-width: 220px; margin: 0 auto; }
+      .credentials { justify-content: center; }
+    }
+
+    /* ═══════════ FAQ ═══════════ */
+    .faq-section { border-top: 1px solid var(--color-border-dark); }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--color-border-dark); }
+    .faq-q { width: 100%; background: none; border: none; padding: 1.4rem 0; font-family: var(--font-body); font-size: 0.98rem; font-weight: 500; color: var(--color-text-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-align: left; line-height: 1.4; }
+    .faq-q::after { content: '+'; font-size: 1.3rem; flex-shrink: 0; margin-left: 1rem; transition: transform 0.3s; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 300; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-a-inner { padding: 0 0 1.4rem; font-size: 0.92rem; color: var(--color-text-muted-dark); line-height: 1.7; font-weight: 300; }
+
+    /* ═══════════ CTA — gradient ═══════════ */
+    .cta-section { background: var(--color-bg); color: var(--color-text-light); text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(232,114,42,0.06), transparent 70%); pointer-events: none; }
+    .cta-section .section-title { color: #fff; }
+    .cta-section p { color: var(--color-text-muted-light); max-width: 520px; margin: 0 auto 2.5rem; font-size: 1.05rem; font-weight: 300; }
+    .cta-email { font-size: 1.05rem; font-weight: 500; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: inline-block; margin-top: 1.5rem; padding-bottom: 2px; border-bottom: 1px solid rgba(232,114,42,0.3); transition: border-color 0.2s; }
+    .cta-email:hover { border-color: var(--color-accent-solid); }
+
+    /* ═══════════ FOOTER ═══════════ */
+    .footer { padding: 2.5rem 2rem; text-align: center; font-size: 0.78rem; color: var(--color-text-muted-dark); border-top: 1px solid var(--color-border-dark); }
+    .footer a { color: var(--color-text-muted-dark); text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: var(--color-accent-solid); }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+
+    /* ═══════════ ANIMATIONS ═══════════ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(232,114,42,0.25); } 50% { box-shadow: 0 0 0 8px rgba(232,114,42,0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════ DOTTED LINE — brand element from MV site ═══════════ */
+    .dotted-divider { width: 120px; height: 2px; margin: 0 auto 2rem; background: repeating-linear-gradient(90deg, var(--color-accent-solid) 0, var(--color-accent-solid) 3px, transparent 3px, transparent 8px); opacity: 0.4; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Projektový <span>dotahovač</span></a>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#jak-to-funguje">Jak to funguje</a></li>
+        <li><a href="#cenik">Ceník</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontakt" class="nav-cta">Domluvit spolupráci</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-label">Individuální podpora seniorního experta</div>
+        <h1>Váš důležitý projekt si zaslouží být <em>dotažený</em></h1>
+        <p class="hero-text">Jsem Mira Vlach — projektový manažer s 15+ lety praxe a hodinovkou 3 000 Kč. V roli Projektového dotahovače vám pomůžu dotáhnout projekt, který stojí na místě.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-gradient">Domluvit spolupráci →</a>
+          <a href="#jak-to-funguje" class="btn btn-ghost">Jak to funguje</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hc-title">Průběh spolupráce</div>
+          <div class="progress-item">
+            <div class="pi-dot done"></div>
+            <span class="pi-label">Úvodní plánovací konzultace</span>
+          </div>
+          <div class="progress-item">
+            <div class="pi-dot done"></div>
+            <span class="pi-label">Rozpad projektu na zvládnutelné úkoly</span>
+          </div>
+          <div class="progress-item">
+            <div class="pi-dot active"></div>
+            <span class="pi-label">Týdenní check-in č. 4</span>
+          </div>
+          <div class="progress-item">
+            <div class="pi-dot pending"></div>
+            <span class="pi-label muted">Finalizace a předání</span>
+          </div>
+          <div class="progress-item">
+            <div class="pi-dot pending"></div>
+            <span class="pi-label muted">Projekt dokončen</span>
+          </div>
+          <div class="hc-stats">
+            <div><strong>15+</strong><small>let praxe</small></div>
+            <div><strong>desítky</strong><small>projektů</small></div>
+            <div><strong>3 000 Kč</strong><small>hodinovka</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section" id="jak-to-funguje">
+    <div class="section-inner">
+      <div class="section-label reveal">Jak to funguje</div>
+      <h2 class="section-title reveal">Od prvního kontaktu k výsledku</h2>
+      <p class="section-subtitle reveal">Důležité je, že chcete. Máte cíl, schopnosti i prostředky. Teď máte i mě.</p>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">01</div>
+          <h3>Nezávazný kontakt</h3>
+          <p>Napište mi o svém projektu. Společně posoudíme, jestli je Dotahovač pro vás ta správná cesta.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">02</div>
+          <h3>Plánovací konzultace</h3>
+          <p>Projekt probereme do hloubky a rozložíme na konkrétní zvládnutelné úkoly s jasnými termíny.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">03</div>
+          <h3>Pravidelné check-iny</h3>
+          <p>Každý týden se ozvu. Sleduju projekt s nadhledem. Povzbuzuju i konfrontuju. Nepolevím.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">04</div>
+          <h3>Projekt dokončen</h3>
+          <p>Možná ne dokonale. Ale hotovo. S viditelným výsledkem, na který můžete být hrdí.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION -->
+  <section class="section" id="pro-koho">
+    <div class="section-inner">
+      <div class="section-label reveal">Co přesně dostanete</div>
+      <h2 class="section-title reveal">Nezaujatý zkušený pohled a neúprosný tempomat vašeho projektu</h2>
+      <div class="value-grid reveal">
+        <div class="value-text">
+          <p>Budu se ptát, naslouchat a sledovat váš projekt s nadhledem. Když bude třeba, řeknu <strong>otevřeně nepříjemnou pravdu</strong>. Jste dospělí lidé — nebudu vám nic přikazovat. Jen budu čekat, že uděláte práci, na které se domluvíme.</p>
+          <p>Přivedu pozornost zpět na <strong>podstatné úkoly</strong> a rozmluvím vám ty nepodstatné. Budu povzbuzovat, když budete unavení. A budu možná šťastnější než vy, až to bude všechno hotovo.</p>
+          <p>Pracujete přímo se mnou — se seniorním projektovým manažerem, ne s asistentem nebo juniorním kolegou.</p>
+        </div>
+        <ul class="value-list">
+          <li><div class="vi-icon">🎯</div><span>Podnikatelé s odkládanými strategickými projekty a rozvojovými iniciativami</span></li>
+          <li><div class="vi-icon">🎓</div><span>Studenti s diplomkou, dizertací nebo akademickým výstupem</span></li>
+          <li><div class="vi-icon">👔</div><span>Lídři a manažeři, kterým se hromadí priority a chybí nadhled</span></li>
+          <li><div class="vi-icon">🚀</div><span>Profesionálové s osobním projektem, který stojí na místě</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-section" id="cenik">
+    <div class="section-inner">
+      <div class="section-label reveal">Ceník</div>
+      <h2 class="section-title reveal">Investice do dotaženého projektu</h2>
+      <p class="section-subtitle reveal">Dva formáty — podle toho, kolik podpory potřebujete.</p>
+      <div class="pricing-grid reveal">
+        <div class="price-card featured">
+          <div class="price-badge">Individuální spolupráce</div>
+          <h3>Projektový dotahovač</h3>
+          <div class="price-amount">10 000 Kč <small>/ měsíc</small></div>
+          <div class="price-note">Pracujete přímo se mnou, 1:1</div>
+          <ul class="price-features">
+            <li>Úvodní hloubková plánovací konzultace (online nebo osobně)</li>
+            <li>Rozplánování projektu na konkrétní úkoly</li>
+            <li>Pravidelné týdenní check-iny (telefon / video)</li>
+            <li>Nezaujatý seniorní manažerský pohled</li>
+            <li>Osobní podpora po celou dobu projektu</li>
+            <li>Přímý kontakt — email, telefon</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-gradient">Domluvit spolupráci →</a>
+        </div>
+        <div class="price-card">
+          <h3>DIY balíček — udělej si sám</h3>
+          <div class="price-amount">500 Kč <small>jednorázově</small></div>
+          <div class="price-note">Kompletní koncept pro vlastní použití</div>
+          <ul class="price-features">
+            <li>Kompletní popsaný koncept Dotahovače</li>
+            <li>Rady jak vybrat vlastního dotahovače</li>
+            <li>Ukázkové dokumenty pro plánování projektu</li>
+            <li>Mé rychlé osobní tipy k vašemu projektu</li>
+            <li>Sleva 500 Kč na plánovací konzultaci se mnou</li>
+            <li>Sleva 15 % na dvoudenní školení PM</li>
+          </ul>
+          <!-- TODO: Nahradit href odkazem na FAPI prodejní stránku -->
+          <a href="#kontakt" class="btn btn-ghost">Koupit balíček — 500 Kč →</a>
+        </div>
+      </div>
+      <p class="pricing-footer reveal">Neplátce DPH. Cena individuální spolupráce se potvrdí při úvodní domluvě.</p>
+
+      <div class="pricing-alt reveal">
+        <p>Hledáte skupinový formát s komunitou? Podívejte se na <a href="https://strategickybootcamp.cz" target="_blank">Strategický bootcamp →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="reference">
+    <div class="section-inner">
+      <div class="section-label reveal">Reference</div>
+      <h2 class="section-title reveal">Co říkají ti, kdo to dotáhli</h2>
+      <p class="section-subtitle reveal">Skutečné příběhy lidí, kteří své projekty dokončili.</p>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <blockquote>„Metoda Projektového dotahovače mi pomohla dokončit dizertační práci. Začátkem června 2017 jsem ji odevzdala, po čtyřech týdnech od porodu druhého synka. Namísto zoufalství cítím obrovskou radost, že jsem ji za čtyři měsíce zvládla dopsat."</blockquote>
+          <div class="t-author">Olga Richterová</div>
+          <div class="t-role">poslankyně PSP ČR</div>
+        </div>
+        <div class="t-card reveal">
+          <blockquote>„Vyzkoušela jsem a vůbec nelituju, Mira je úžasným pomocníkem, který vás vede a podporuje. Z vašich úspěchů má upřímnou radost a doptává se i dávno po skončení spolupráce. Dávám 10 hvězdiček z 10!"</blockquote>
+          <div class="t-author">Nina Hanáková</div>
+          <div class="t-role">EnglishBrno</div>
+        </div>
+        <div class="t-card reveal">
+          <blockquote>„Projektový dotahovač mi pomáhá prodrat se kupou nepodstatných věcí a soustředit se na jeden nejdůležitější projekt. Zvláště v obdobích, kdy toho je moc, je člověk dál schopen projekt posouvat — byť po malých krůčcích."</blockquote>
+          <div class="t-author">Dominika Špačková</div>
+          <div class="t-role">poradkyně kariérního rozvoje</div>
+        </div>
+        <div class="t-card reveal">
+          <blockquote>„Sám pracuji jako projektový manažer, tak vím, jak je obtížné uřídit sám sebe. Moje ‚dotahovačka' mě s využitím Mirových metod bezpečně provedla všemi úskalími. Projekt jsem úspěšně dotáhl do konce."</blockquote>
+          <div class="t-author">Michal Konečný</div>
+          <div class="t-role">projektový manažer</div>
+        </div>
+        <div class="t-card reveal">
+          <blockquote>„Koncept Projektového dotahovače od prvního dne zavádím do praxe a pomohl mi urovnat si spoustu věcí. Má očekávání byla splněna na více než 100 %."</blockquote>
+          <div class="t-author">Jan Kudělka</div>
+          <div class="t-role">PatriotiMSK</div>
+        </div>
+        <div class="t-card reveal">
+          <blockquote>„Bez konceptu Dotahovače bych pravděpodobně dodnes nespustil mé otevřené školení projektového řízení. Nenabízím nic, co bych sám nepoužíval."</blockquote>
+          <div class="t-author">Mira Vlach</div>
+          <div class="t-role">autor konceptu</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="o-mne">
+    <div class="section-inner">
+      <div class="section-label reveal">Kdo za tím stojí</div>
+      <h2 class="section-title reveal">Ing. Mira Vlach</h2>
+      <div class="about-grid reveal">
+        <div class="about-photo">
+          <!-- TODO: Nahradit skutečnou fotkou z nového webu mira-vlach.cz -->
+          <div class="placeholder">Profilová fotografie<br>(260×347 px)</div>
+        </div>
+        <div class="about-content">
+          <h3>Nezávislý seniorní odborník na projektové řízení a realizaci strategie</h3>
+          <p>Od roku 2006 působím jako projektový manažer, lektor a konzultant. Podporuji odhodlané týmy a lídry v ambiciózních projektech a na cestě k dosahování byznysových i organizačních cílů.</p>
+          <p>Projektový dotahovač je služba, kde vám věnuji svou pozornost a zkušenosti. Většina lidí ví, co má dělat — potřebuje někoho, kdo je podrží v tom, aby to opravdu udělali. A kdo má dost zkušeností na to, aby včas upozornil na rizika.</p>
+          <p>Sídlím v Ostravě, ale spolupráce běží kompletně online — z celé ČR i SR.</p>
+          <div class="credentials">
+            <span class="cred-tag">2. místo Živnostník roku MSK 2012</span>
+            <span class="cred-tag">Certifikace PRINCE2</span>
+            <span class="cred-tag">IPMA CZ & PMI</span>
+            <span class="cred-tag">SkoleniPM.cz</span>
+            <span class="cred-tag">Strategický bootcamp</span>
+            <span class="cred-tag">Projektový klub</span>
+            <span class="cred-tag">OKR Mastermind</span>
+            <span class="cred-tag">Leaders Club</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="section-inner">
+      <div class="section-label reveal" style="text-align:center">Časté dotazy</div>
+      <h2 class="section-title reveal" style="text-align:center">Zajímá vás víc?</h2>
+      <div class="dotted-divider reveal"></div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Proč 10 000 Kč měsíčně?</button>
+          <div class="faq-a"><div class="faq-a-inner">Pracujete přímo se seniorním projektovým manažerem s hodinovkou 3 000 Kč. Za měsíční paušál dostáváte plánovací konzultaci, pravidelné týdenní check-iny a průběžnou podporu. Je to investice do dokončeného projektu — ne do další porady.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Jak se to liší od Strategického bootcampu?</button>
+          <div class="faq-a"><div class="faq-a-inner">Bootcamp je skupinový program s komunitou, fixními běhy a vlastním tempem. Dotahovač je individuální 1:1 spolupráce přímo se mnou, zaměřená na jeden konkrétní projekt. Bootcamp je pro ty, kdo potřebují strukturu a komunitu. Dotahovač je pro ty, kdo chtějí osobní expertní dohled.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Musíme se potkávat osobně?</button>
+          <div class="faq-a"><div class="faq-a-inner">Nemusíte. Úvodní schůzka i celá následná spolupráce probíhá bez problémů online — videohovorem, telefonem nebo emailem. Pokud jste z Ostravy a okolí, rádi se potkáme i osobně, ale není to podmínka.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Jak dlouho spolupráce typicky trvá?</button>
+          <div class="faq-a"><div class="faq-a-inner">Záleží na projektu. Typicky 2–4 měsíce. Cílem je dotáhnout projekt co nejdříve — ani jeden z nás nemá zájem na zbytečném protahování.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Pro jaké typy projektů je služba vhodná?</button>
+          <div class="faq-a"><div class="faq-a-inner">Pro jakékoliv důležité projekty — byznysové, akademické i osobní. Spuštění produktu, diplomka, rebranding, rozjezd nové divize, psaní knihy. Cokoliv, co má jasný cíl a stojí na místě.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Nesete odpovědnost za výsledek?</button>
+          <div class="faq-a"><div class="faq-a-inner">Ne. Nabízím nezaujatý zkušený pohled a sloužím jako tempomat projektu. Odpovědnost za výsledek zůstává na vás — ale nebudete na to sami. A mám dost zkušeností, abych vás včas upozornil na problémy.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Co když si nemůžu dovolit individuální spolupráci?</button>
+          <div class="faq-a"><div class="faq-a-inner">Existuje DIY balíček za 500 Kč — získáte kompletní koncept a materiály, abyste si dotahovače našli sami ve svém okolí. Nebo zvažte Strategický bootcamp jako skupinovou alternativu.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section" id="kontakt">
+    <div class="section-inner" style="text-align:center">
+      <div class="section-label reveal">Nezávazný kontakt</div>
+      <h2 class="section-title reveal">Čím dříve začneme, tím dříve bude hotovo</h2>
+      <p class="reveal">Máte projekt, který čeká zbytečně dlouho? Napište mi — probereme, jestli vám Dotahovač může pomoci.</p>
+      <div class="reveal">
+        <a href="mailto:mv@miravlach.cz?subject=Projektový dotahovač – mám zájem o spolupráci" class="btn btn-gradient" style="font-size:1rem;padding:1rem 2.5rem;">Napsat email →</a>
+        <br>
+        <a href="mailto:mv@miravlach.cz" class="cta-email">mv@miravlach.cz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://www.mira-vlach.cz" target="_blank">mira-vlach.cz</a>
+      <a href="https://strategickybootcamp.cz" target="_blank">strategickybootcamp.cz</a>
+      <a href="https://www.skolenipm.cz" target="_blank">skolenipm.cz</a>
+      <a href="https://www.projektovyklub.cz" target="_blank">projektovyklub.cz</a>
+    </div>
+    <p>© 2015–2026 Ing. Mira Vlach — Projektový dotahovač</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)});
+    document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const a=item.querySelector('.faq-a');const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open')})});
+  </script>
+</body>
+</html>
