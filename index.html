@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projektový dotahovač — dotáhněte svůj projekt do konce | Mira Vlach</title>
-  <meta name="description" content="Koncept Projektového dotahovače vám pomůže dotáhnout odkládané projekty do konce. Balíček za 650 Kč nebo skupinový Strategický bootcamp.">
+  <title>Projektový dotahovač — osvědčený koncept jak dotáhnout projekt do konce | Mira Vlach</title>
+  <meta name="description" content="Pořiďte si osvědčený koncept Projektového dotahovače za 650 Kč a konečně dotáhněte projekt, který stojí na místě. Nebo přijďte do Strategického bootcampu.">
   <meta name="author" content="Ing. Mira Vlach">
   <meta property="og:title" content="Projektový dotahovač — dotáhněte svůj projekt do konce">
-  <meta property="og:description" content="Osvědčený koncept, jak dotáhnout projekt, který stojí na místě. Balíček za 650 Kč nebo Strategický bootcamp.">
+  <meta property="og:description" content="Osvědčený koncept za 650 Kč, díky kterému desítky lidí dokončily projekty, na které se jim nedařilo najít čas nebo disciplínu.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dotahovac.cz">
+  <meta property="og:image" content="https://dotahovac.cz/images/og-image.jpg">
   <link rel="canonical" href="https://dotahovac.cz">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -50,6 +52,8 @@
     .nav-links a:hover { color: #fff; }
     .nav-cta { background: var(--gradient-accent) !important; -webkit-text-fill-color: #fff !important; color: #fff !important; padding: 0.55rem 1.4rem !important; border-radius: 100px !important; font-weight: 500 !important; transition: opacity 0.25s !important; }
     .nav-cta:hover { opacity: 0.88 !important; }
+    .nav-cta-short { display: none; }
+    @media (max-width: 900px) { .nav-cta-full { display: none; } .nav-cta-short { display: inline; } }
     .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
     .nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
     @media (max-width: 768px) {
@@ -215,7 +219,7 @@
         <li><a href="#o-mne">O mně</a></li>
         <li><a href="#faq">FAQ</a></li>
         <!-- TODO: Nahradit href odkazem na FAPI -->
-        <li><a href="#balicek" class="nav-cta">Koupit balíček — 650 Kč</a></li>
+        <li><a href="#balicek" class="nav-cta"><span class="nav-cta-full">Koupit balíček — 650 Kč</span><span class="nav-cta-short">Balíček 650 Kč</span></a></li>
       </ul>
     </div>
   </nav>
@@ -445,6 +449,10 @@
           <button class="faq-q">Co když na to s vlastním dotahovačem nestačíme?</button>
           <div class="faq-a"><div class="faq-a-inner">V balíčku je sleva 500 Kč na plánovací konzultaci přímo s Mirou Vlachem. Můžete ji využít k rozjezdu nebo v momentě, kdy se zasekáte. Případně zvažte Strategický bootcamp, kde máte k dispozici mentory a strukturu.</div></div>
         </div>
+        <div class="faq-item">
+          <button class="faq-q">Co dotahovač neřeší?</button>
+          <div class="faq-a"><div class="faq-a-inner">Dotahovač nenahrazuje odbornou konzultaci v dané oblasti — neporadí vám s obsahem diplomky, s technickým řešením produktu nebo s právními aspekty podnikání. Řeší strukturu, tempo a disciplínu. Pokud potřebujete i odborný vstup, rádi vás nasměrujeme na správné lidi.</div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -459,6 +467,8 @@
         <p class="exclusive-text">Pro ty, kdo chtějí osobní dohled seniorního specialisty na projektové řízení a realizaci strategie s hodinovkou 3 000 Kč. Pravidelné týdenní check-iny, hloubková plánovací konzultace a přímá podpora po celou dobu projektu — 1:1, pouze se mnou. Nejde jen o dotažení projektu, ale i o jeho propojení s vašimi celkovými cíli a strategií.</p>
         <div class="exclusive-price">10 000 Kč / měsíc</div>
         <p class="exclusive-price-note">Délka spolupráce typicky 2–4 měsíce</p>
+        <p class="exclusive-text">Spolupráce končí úspěšně, když je projekt dokončen — nebo když společně dojdeme k jasnému rozhodnutí o jeho dalším směřování. Výsledkem nemusí být vždy dokončení za každou cenu, ale vždy jasno a posun.</p>
+        <p class="exclusive-text" style="font-size:0.88rem;color:rgba(255,255,255,0.35);">V případě převisu poptávky vás mohu propojit s proškolenými dotahovači z mé sítě, kteří pracují podle stejné metodiky.</p>
         <p class="exclusive-text">Pokud vás tato možnost zajímá, napište mi. Probereme, jestli je to pro váš projekt ta správná cesta.</p>
         <a href="mailto:mv@miravlach.cz?subject=Projektový dotahovač – zájem o individuální spolupráci" class="exclusive-email">mv@miravlach.cz</a>
       </div>
